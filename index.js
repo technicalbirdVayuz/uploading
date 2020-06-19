@@ -28,15 +28,15 @@ app.post('/upload', function(req, res) {
   console.log('req.files >>>', req.files); // eslint-disable-line
 
   sampleFile = req.files.sampleFile;
-
-  uploadPath = __dirname + '/uploads/' + sampleFile.name;
+  var suffix = '/uploads/' + "_" +Date.now() +"_" +sampleFile.name ;
+  uploadPath = __dirname + suffix;
 
   sampleFile.mv(uploadPath, function(err) {
     if (err) {
       return res.status(500).send(err);
     }
 
-    res.send('File uploaded to ' + uploadPath);
+    res.send( {path:suffix});
   });
 });
 
