@@ -4,8 +4,7 @@ const fileUpload = require('express-fileupload');
 const app = express();
 const path = require('path');
 
-const PORT = 3000;
-app.use('/form', express.static(__dirname + '/index.html'));
+const PORT = 3001;
 app.use("/uploads", express.static(path.join(__dirname, 'uploads')));
 // default options
 app.use(fileUpload({
